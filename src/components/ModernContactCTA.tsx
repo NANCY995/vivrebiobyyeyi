@@ -1,4 +1,4 @@
-import { Phone, Mail, MapPin, Globe, Camera, Music2, Link2 } from 'lucide-react';
+import { Phone, Mail, MapPin, Camera, Music2, ThumbsUp, Pin } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 export default function ModernContactCTA() {
@@ -86,7 +86,7 @@ export default function ModernContactCTA() {
               className="w-10 h-10 rounded-full bg-white/10 hover:bg-[#25D366] flex items-center justify-center text-white transition-all hover:scale-110"
               title="Facebook @pagevivrebio"
             >
-              <Camera size={18} />
+              <ThumbsUp size={18} />
             </a>
             <a
               href="https://www.instagram.com/yeyibionature"
@@ -95,7 +95,7 @@ export default function ModernContactCTA() {
               className="w-10 h-10 rounded-full bg-white/10 hover:bg-[#25D366] flex items-center justify-center text-white transition-all hover:scale-110"
               title="Instagram @yeyibionature"
             >
-              <Globe size={18} />
+              <Camera size={18} />
             </a>
             <a
               href="https://www.tiktok.com/@vivrebioshop_bj"
@@ -113,7 +113,7 @@ export default function ModernContactCTA() {
               className="w-10 h-10 rounded-full bg-white/10 hover:bg-[#25D366] flex items-center justify-center text-white transition-all hover:scale-110"
               title="Pinterest blanchehonvou"
             >
-              <Link2 size={18} />
+              <Pin size={18} />
             </a>
           </div>
         </div>

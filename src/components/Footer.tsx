@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Phone, Mail, Globe, Camera, Music2, Link2 } from 'lucide-react';
+import { Phone, Mail, ThumbsUp, Camera, Music2, Pin } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 export default function Footer() {
@@ -41,16 +41,16 @@ export default function Footer() {
             <p>{t('footer.description')}</p>
             <div className="social-row">
               <a href="https://www.instagram.com/yeyibionature" target="_blank" rel="noopener noreferrer" className="social-btn" aria-label="Instagram">
-                <Globe size={15} />
+                <Camera size={15} />
               </a>
               <a href="https://www.tiktok.com/@vivrebioshop_bj" target="_blank" rel="noopener noreferrer" className="social-btn" aria-label="TikTok">
                 <Music2 size={15} />
               </a>
               <a href="https://www.facebook.com/pagevivrebio" target="_blank" rel="noopener noreferrer" className="social-btn" aria-label="Facebook">
-                <Camera size={15} />
+                <ThumbsUp size={15} />
               </a>
               <a href="https://fr.pinterest.com/blanchehonvou" target="_blank" rel="noopener noreferrer" className="social-btn" aria-label="Pinterest">
-                <Link2 size={15} />
+                <Pin size={15} />
               </a>
               <a href="https://chat.whatsapp.com/EVACuFtxY1YFzjyXCxp4sy" target="_blank" rel="noopener noreferrer" className="social-btn" aria-label="Groupe WhatsApp">
                 <Phone size={15} />

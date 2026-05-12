@@ -24,7 +24,8 @@ declare module 'lucide-react' {
   export const Link2: LucideIcon;
   export const CirclePlay: LucideIcon;
   export const Globe: LucideIcon;
-  export const MessageCircle: LucideIcon;
+  export const ThumbsUp: LucideIcon;
+  export const Pin: LucideIcon;
   export const Share: LucideIcon;
   export const Link: LucideIcon;
 }
