@@ -1,4 +1,4 @@
-import { Phone, Mail, MapPin, Globe, Camera, Music2 } from 'lucide-react';
+import { Phone, Mail, MapPin, Globe, Camera, Music2, Link2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 export default function ModernContactCTA() {
@@ -80,31 +80,40 @@ export default function ModernContactCTA() {
           <p className="text-white/60 text-sm mb-4">{t('contact.followUs')}</p>
           <div className="flex justify-center gap-3">
             <a
-              href="https://www.facebook.com/vivrebio"
+              href="https://www.facebook.com/pagevivrebio"
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 rounded-full bg-white/10 hover:bg-[#25D366] flex items-center justify-center text-white transition-all hover:scale-110"
-              title="Facebook @vivrebio"
+              title="Facebook @pagevivrebio"
             >
               <Camera size={18} />
             </a>
             <a
-              href="https://www.instagram.com/vivrebio"
+              href="https://www.instagram.com/yeyibionature"
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 rounded-full bg-white/10 hover:bg-[#25D366] flex items-center justify-center text-white transition-all hover:scale-110"
-              title="Instagram @vivrebio"
+              title="Instagram @yeyibionature"
             >
               <Globe size={18} />
             </a>
-            <a 
-              href="https://www.tiktok.com/@vivrebioshop_bj" 
-              target="_blank" 
+            <a
+              href="https://www.tiktok.com/@vivrebioshop_bj"
+              target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 rounded-full bg-white/10 hover:bg-[#25D366] flex items-center justify-center text-white transition-all hover:scale-110"
               title="TikTok @vivrebioshop_bj"
             >
               <Music2 size={18} />
+            </a>
+            <a
+              href="https://fr.pinterest.com/blanchehonvou"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 rounded-full bg-white/10 hover:bg-[#25D366] flex items-center justify-center text-white transition-all hover:scale-110"
+              title="Pinterest blanchehonvou"
+            >
+              <Link2 size={18} />
             </a>
           </div>
         </div>

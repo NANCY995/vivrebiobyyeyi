@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Phone, Mail, MapPin, Globe, Camera, CirclePlay, Music2, Clock } from 'lucide-react';
+import { Phone, Mail, MapPin, Globe, Camera, Music2, Clock, Link2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -190,10 +190,10 @@ export default function ContactPage() {
             <div className="bg-white dark:bg-gray-800 border border-[#DDD5C5] dark:border-gray-700 rounded-2xl p-6">
               <p className="text-sm font-semibold text-[#2A2A2A] dark:text-gray-100 mb-4 uppercase tracking-wider">{t('contact.followUs')}</p>
               <div className="flex gap-3">
-                <a href="#" className="w-10 h-10 rounded-full border border-[#DDD5C5] dark:border-gray-600 flex items-center justify-center text-[#6B6B6B] dark:text-gray-400 hover:border-[#C4952E] hover:text-[#C4952E] transition-all no-underline" aria-label="Facebook"><Camera size={18} /></a>
-                <a href="#" className="w-10 h-10 rounded-full border border-[#DDD5C5] dark:border-gray-600 flex items-center justify-center text-[#6B6B6B] dark:text-gray-400 hover:border-[#C4952E] hover:text-[#C4952E] transition-all no-underline" aria-label="Instagram"><Globe size={18} /></a>
-                <a href="#" className="w-10 h-10 rounded-full border border-[#DDD5C5] dark:border-gray-600 flex items-center justify-center text-[#6B6B6B] dark:text-gray-400 hover:border-[#C4952E] hover:text-[#C4952E] transition-all no-underline" aria-label="TikTok"><Music2 size={18} /></a>
-                <a href="#" className="w-10 h-10 rounded-full border border-[#DDD5C5] dark:border-gray-600 flex items-center justify-center text-[#6B6B6B] dark:text-gray-400 hover:border-[#C4952E] hover:text-[#C4952E] transition-all no-underline" aria-label="YouTube"><CirclePlay size={18} /></a>
+                <a href="https://www.facebook.com/pagevivrebio" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-[#DDD5C5] dark:border-gray-600 flex items-center justify-center text-[#6B6B6B] dark:text-gray-400 hover:border-[#C4952E] hover:text-[#C4952E] transition-all no-underline" aria-label="Facebook"><Camera size={18} /></a>
+                <a href="https://www.instagram.com/yeyibionature" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-[#DDD5C5] dark:border-gray-600 flex items-center justify-center text-[#6B6B6B] dark:text-gray-400 hover:border-[#C4952E] hover:text-[#C4952E] transition-all no-underline" aria-label="Instagram"><Globe size={18} /></a>
+                <a href="https://www.tiktok.com/@vivrebioshop_bj" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-[#DDD5C5] dark:border-gray-600 flex items-center justify-center text-[#6B6B6B] dark:text-gray-400 hover:border-[#C4952E] hover:text-[#C4952E] transition-all no-underline" aria-label="TikTok"><Music2 size={18} /></a>
+                <a href="https://fr.pinterest.com/blanchehonvou" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-[#DDD5C5] dark:border-gray-600 flex items-center justify-center text-[#6B6B6B] dark:text-gray-400 hover:border-[#C4952E] hover:text-[#C4952E] transition-all no-underline" aria-label="Pinterest"><Link2 size={18} /></a>
               </div>
             </div>
           </div>
