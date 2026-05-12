@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: 0.625rem;
+
+    /* Vivre Bio Custom Colors */
+    --vb-cream: #F5F0E8;
+    --vb-warm: #EDE6D6;
+    --vb-green: #2D6A1B;
+    --vb-green-dk: #1B4D0F;
+    --vb-green-lt: #4A8C3F;
+    --vb-red: #D42424;
+    --vb-red-dk: #A81818;
+    --vb-gold: #C4952E;
+    --vb-gold-lt: #D4A84A;
+    --vb-charcoal: #2A2A2A;
+    --vb-mid: #6B6B6B;
+    --vb-light: #9A9A9A;
+    --vb-white: #FFFFFF;
+    --vb-border: #DDD5C5;
+    --vb-terracotta: #C45D3A;
+    --ff-serif: 'Cormorant Garamond', Georgia, serif;
+    --ff-sans: 'Jost', sans-serif;
+    --transition: 0.25s ease;
+  }
+
+  .dark {
+    --background: 0 0% 10%;
+    --foreground: 0 0% 95%;
+    --card: 0 0% 12%;
+    --card-foreground: 0 0% 95%;
+    --popover: 0 0% 12%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 145 35% 40%;
+    --primary-foreground: 0 0% 95%;
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 95%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 0 0% 15%;
+    --accent-foreground: 0 0% 95%;
+    --destructive: 0 62.8% 40.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 145 35% 40%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-[#F5F0E8] dark:bg-[#0A0A0A] text-[#2A2A2A] dark:text-gray-100;
+    font-family: 'Jost', sans-serif;
+    font-size: 15px;
+    line-height: 1.65;
+  }
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  height: 6px;
+  border-radius: 3px;
+  background: #DDD5C5;
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #2D6A1B;
+  cursor: pointer;
+}
