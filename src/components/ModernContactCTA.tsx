@@ -1,4 +1,4 @@
-import { Phone, Mail, MapPin, Camera, Music2, ThumbsUp, Pin } from 'lucide-react';
+import { Phone, Mail, MapPin } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 export default function ModernContactCTA() {
@@ -86,7 +86,7 @@ export default function ModernContactCTA() {
               className="w-10 h-10 rounded-full bg-white/10 hover:bg-[#25D366] flex items-center justify-center text-white transition-all hover:scale-110"
               title="Facebook @pagevivrebio"
             >
-              <ThumbsUp size={18} />
+              <i className="fa-brands fa-facebook" style={{fontSize: 18}}></i>
             </a>
             <a
               href="https://www.instagram.com/yeyibionature"
@@ -95,7 +95,7 @@ export default function ModernContactCTA() {
               className="w-10 h-10 rounded-full bg-white/10 hover:bg-[#25D366] flex items-center justify-center text-white transition-all hover:scale-110"
               title="Instagram @yeyibionature"
             >
-              <Camera size={18} />
+              <i className="fa-brands fa-instagram" style={{fontSize: 18}}></i>
             </a>
             <a
               href="https://www.tiktok.com/@vivrebioshop_bj"
@@ -104,7 +104,7 @@ export default function ModernContactCTA() {
               className="w-10 h-10 rounded-full bg-white/10 hover:bg-[#25D366] flex items-center justify-center text-white transition-all hover:scale-110"
               title="TikTok @vivrebioshop_bj"
             >
-              <Music2 size={18} />
+              <i className="fa-brands fa-tiktok" style={{fontSize: 18}}></i>
             </a>
             <a
               href="https://fr.pinterest.com/blanchehonvou"
@@ -113,7 +113,7 @@ export default function ModernContactCTA() {
               className="w-10 h-10 rounded-full bg-white/10 hover:bg-[#25D366] flex items-center justify-center text-white transition-all hover:scale-110"
               title="Pinterest blanchehonvou"
             >
-              <Pin size={18} />
+              <i className="fa-brands fa-pinterest" style={{fontSize: 18}}></i>
             </a>
           </div>
         </div>
