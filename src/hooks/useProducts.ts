@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from 'react';
-import { supabase } from '../lib/supabase';
+import { getSupabase } from '../lib/supabase';
 import { products as fallbackProducts, categories as fallbackCategories } from '../data/products';
 import type { Product, ProductCategory } from '../types';
 import type { SupabaseProduct } from '../types/database';
@@ -50,6 +50,7 @@ export function useProducts(options?: UseProductsOptions) {
     setError(null);
 
     try {
+      const supabase = await getSupabase();
       let query = supabase.from('products').select('*');
 
       if (options?.ids && options.ids.length > 0) {
@@ -119,6 +120,7 @@ export function useProduct(slug: string) {
       setError(null);
 
       try {
+        const supabase = await getSupabase();
         const { data, error: fetchError } = await supabase
           .from('products')
           .select('*')
@@ -161,6 +163,7 @@ export function useCategories() {
 
     async function fetchCategories() {
       try {
+        const supabase = await getSupabase();
         const { data, error: fetchError } = await supabase
           .from('categories')
           .select('*')

@@ -1,6 +1,11 @@
-import { createClient } from '@supabase/supabase-js';
+let client: any = null;
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
-
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+export async function getSupabase() {
+  if (!client) {
+    const { createClient } = await import('@supabase/supabase-js');
+    const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+    const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+    client = createClient(supabaseUrl, supabaseAnonKey);
+  }
+  return client;
+}

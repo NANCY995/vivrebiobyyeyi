@@ -37,7 +37,8 @@ export default defineConfig({
         manualChunks: {
           'vendor-react': ['react', 'react-dom', 'react-router', 'react-router-dom'],
           'vendor-ui': ['lucide-react', 'sonner'],
-          'vendor-data': ['@supabase/supabase-js', 'i18next', 'react-i18next', 'i18next-browser-languagedetector'],
+          'vendor-i18n': ['i18next', 'react-i18next', 'i18next-browser-languagedetector'],
+          'vendor-supabase': ['@supabase/supabase-js'],
           'vendor-state': ['zustand'],
           'vendor-forms': ['react-hook-form', '@hookform/resolvers', 'zod'],
         },
