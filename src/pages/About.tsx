@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import Seo from '../components/Seo';
+import { asset } from '../lib/assets';
 // @ts-ignore
 import { Leaf, Heart, Sparkles, Award, ShieldCheck, Users } from 'lucide-react';
 
@@ -15,7 +16,7 @@ export default function AboutPage() {
 
       <div className="relative bg-gradient-to-b from-[#EDE6D6] to-[#F5F0E8] py-24 border-b border-[#DDD5C5] overflow-hidden">
         <div className="absolute top-0 right-0 w-1/3 h-full opacity-10 pointer-events-none">
-          <img src="/hero-vivrebio.jpg" alt="bg" className="w-full h-full object-cover" />
+          <img src={asset("/hero-vivrebio.jpg")} alt="bg" className="w-full h-full object-cover" />
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center relative z-10">
           <span className="inline-block text-xs font-semibold tracking-[0.12em] uppercase text-[#2D6A1B] border-b-2 border-[#2D6A1B] pb-1 mb-4">
@@ -49,7 +50,7 @@ export default function AboutPage() {
           <div className="relative group">
             <div className="absolute -inset-4 bg-[#2D6A1B]/20 rounded-[2rem] blur-2xl group-hover:bg-[#2D6A1B]/30 transition-all duration-500"></div>
             <img 
-              src="/hero-vivrebio.jpg" 
+              src={asset("/hero-vivrebio.jpg")} 
               alt="Vivre Bio Nature" 
               className="relative rounded-3xl shadow-2xl w-full object-cover aspect-[4/3] group-hover:scale-[1.02] transition-transform duration-500"
             />
@@ -65,10 +66,10 @@ export default function AboutPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {[
-            { icon: <Leaf />, title: t('about.valuePurete'), desc: t('about.valuePureteDesc'), img: '/poudres-graines.jpg' },
-            { icon: <Heart />, title: t('about.valuePassion'), desc: t('about.valuePassionDesc'), img: '/cosmetiques.jpg' },
-            { icon: <ShieldCheck />, title: t('about.valueQualite'), desc: t('about.valueQualiteDesc'), img: '/argiles.jpg' },
-            { icon: <Users />, title: t('about.valueCommunaute'), desc: t('about.valueCommunauteDesc'), img: '/miel-produits.jpg' },
+            { icon: <Leaf />, title: t('about.valuePurete'), desc: t('about.valuePureteDesc'), img: asset('/poudres-graines.jpg') },
+            { icon: <Heart />, title: t('about.valuePassion'), desc: t('about.valuePassionDesc'), img: asset('/cosmetiques.jpg') },
+            { icon: <ShieldCheck />, title: t('about.valueQualite'), desc: t('about.valueQualiteDesc'), img: asset('/argiles.jpg') },
+            { icon: <Users />, title: t('about.valueCommunaute'), desc: t('about.valueCommunauteDesc'), img: asset('/miel-produits.jpg') },
           ].map((val, i) => (
             <div key={i} className="group bg-white dark:bg-[#1A1A1A] rounded-3xl border border-[#DDD5C5] dark:border-gray-700 overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
               <div className="h-40 overflow-hidden">

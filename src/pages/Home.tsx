@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import Seo from '../components/Seo';
 import { organizationSchema, websiteSchema } from '../lib/schema';
+import { asset } from '../lib/assets';
 import ModernHero from '../components/ModernHero';
 import TrustStrip from '../components/TrustStrip';
 import ModernCategorySection from '../components/ModernCategorySection';
@@ -40,7 +41,7 @@ function AboutSection() {
           </div>
           <div className="relative">
             <img 
-              src="/miel-produits.jpg" 
+              src={asset("/miel-produits.jpg")} 
               alt="Produits naturels Vivre Bio" 
               loading="lazy"
               className="w-full h-[500px] object-cover rounded-lg shadow-xl"
@@ -73,7 +74,7 @@ export default function Home() {
         title={t('home.categories.poudres.title')}
         subtitle={t('home.categories.poudres.subtitle')}
         categoryFilter="poudres-graines"
-        image="/poudres-graines.jpg"
+        image={asset("/poudres-graines.jpg")}
         imageAlt={t('home.categories.poudres.alt')}
       />
       <ModernCategorySection
@@ -82,7 +83,7 @@ export default function Home() {
         title={t('home.categories.naturels.title')}
         subtitle={t('home.categories.naturels.subtitle')}
         categoryFilter="produits-naturels"
-        image="/miel-produits.jpg"
+        image={asset("/miel-produits.jpg")}
         imageAlt={t('home.categories.naturels.alt')}
       />
       <ModernCategorySection
@@ -91,7 +92,7 @@ export default function Home() {
         title={t('home.categories.cosmetiques.title')}
         subtitle={t('home.categories.cosmetiques.subtitle')}
         categoryFilter="soins-corporels"
-        image="/cosmetiques.jpg"
+        image={asset("/cosmetiques.jpg")}
         imageAlt={t('home.categories.cosmetiques.alt')}
       />
       <ModernCategorySection
@@ -100,7 +101,7 @@ export default function Home() {
         title={t('home.categories.argiles.title')}
         subtitle={t('home.categories.argiles.subtitle')}
         categoryFilter="argiles"
-        image="/argiles.jpg"
+        image={asset("/argiles.jpg")}
         imageAlt={t('home.categories.argiles.alt')}
       />
       <ModernCategorySection
@@ -109,7 +110,7 @@ export default function Home() {
         title={t('home.categories.thes.title')}
         subtitle={t('home.categories.thes.subtitle')}
         categoryFilter="thes-infusions"
-        image="/thes-infusion.jpg"
+        image={asset("/thes-infusion.jpg")}
         imageAlt={t('home.categories.thes.alt')}
       />
       {/* Huiles Essentielles Section */}
@@ -127,7 +128,7 @@ export default function Home() {
           </div>
           
           <img 
-            src="/huiles-essentielles.jpg" 
+            src={asset("/huiles-essentielles.jpg")} 
             alt="Huiles essentielles" 
             loading="lazy"
             className="w-full h-80 object-cover rounded-lg shadow-lg mb-8"
@@ -150,7 +151,7 @@ export default function Home() {
         title={t('home.categories.diffuseurs.title')}
         subtitle={t('home.categories.diffuseurs.subtitle')}
         categoryFilter="diffuseurs"
-        image="/diffuseurs.jpg"
+        image={asset("/diffuseurs.jpg")}
         imageAlt={t('home.categories.diffuseurs.alt')}
       />
       <AboutSection />

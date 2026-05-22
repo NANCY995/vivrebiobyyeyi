@@ -1,6 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Seo from '../components/Seo';
+import { asset } from '../lib/assets';
 import { ArrowLeft, Calendar, Clock } from 'lucide-react';
 
 const BLOG_POSTS = [
@@ -8,42 +9,42 @@ const BLOG_POSTS = [
     id: 1,
     date: '12 Mai 2024',
     readTime: '5 min',
-    image: '/poudres-graines.jpg',
+    image: asset('/poudres-graines.jpg'),
     slug: 'bienfaits-moringa',
   },
   {
     id: 2,
     date: '05 Mai 2024',
     readTime: '8 min',
-    image: '/huiles-essentielles.jpg',
+    image: asset('/huiles-essentielles.jpg'),
     slug: 'guide-huiles-essentielles',
   },
   {
     id: 3,
     date: '28 Avril 2024',
     readTime: '6 min',
-    image: '/argiles.jpg',
+    image: asset('/argiles.jpg'),
     slug: 'detox-argiles',
   },
   {
     id: 4,
     date: '15 Avril 2024',
     readTime: '7 min',
-    image: '/miel-produits.jpg',
+    image: asset('/miel-produits.jpg'),
     slug: 'pourquoi-le-bio',
   },
   {
     id: 5,
     date: '10 Avril 2024',
     readTime: '6 min',
-    image: '/thes-infusion.jpg',
+    image: asset('/thes-infusion.jpg'),
     slug: 'art-infusions',
   },
   {
     id: 6,
     date: '02 Avril 2024',
     readTime: '10 min',
-    image: '/cosmetiques.jpg',
+    image: asset('/cosmetiques.jpg'),
     slug: 'cosmetique-maison',
   },
 ];

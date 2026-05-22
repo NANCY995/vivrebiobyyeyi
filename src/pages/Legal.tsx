@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import Seo from '../components/Seo';
+import { asset } from '../lib/assets';
 // @ts-ignore
 import { FileText, Lock, ShieldCheck, Check, Scale } from 'lucide-react';
 
@@ -15,7 +16,7 @@ export default function LegalPage() {
 
       <div className="relative bg-gradient-to-b from-[#EDE6D6] to-[#F5F0E8] py-24 border-b border-[#DDD5C5] overflow-hidden">
         <div className="absolute top-0 right-0 w-1/3 h-full opacity-10 pointer-events-none">
-          <img src="/hero-vivrebio.jpg" alt="bg" className="w-full h-full object-cover" />
+          <img src={asset("/hero-vivrebio.jpg")} alt="bg" className="w-full h-full object-cover" />
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center relative z-10">
             <span className="inline-block text-xs font-semibold tracking-[0.12em] uppercase text-[#2D6A1B] border-b-2 border-[#2D6A1B] pb-1 mb-4">

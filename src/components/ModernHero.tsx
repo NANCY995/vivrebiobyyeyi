@@ -1,6 +1,7 @@
 import { Star, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { asset } from '../lib/assets';
 
 export default function ModernHero() {
   const { t } = useTranslation();
@@ -9,7 +10,7 @@ export default function ModernHero() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="/hero-vivrebio.jpg" 
+          src={asset("/hero-vivrebio.jpg")} 
           alt="Produits naturels Vivre Bio" 
           className="w-full h-full object-cover"
         />

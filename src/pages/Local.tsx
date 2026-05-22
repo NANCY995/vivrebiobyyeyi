@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import Seo from '../components/Seo';
 import { localBusinessSchema } from '../lib/schema';
+import { asset } from '../lib/assets';
 // @ts-ignore
 import { MapPin, ShoppingBag, TrendingUp, Globe, Leaf, Heart } from 'lucide-react';
 
@@ -17,7 +18,7 @@ export default function LocalPage() {
 
       <div className="relative bg-gradient-to-b from-[#EDE6D6] to-[#F5F0E8] py-24 border-b border-[#DDD5C5] overflow-hidden">
         <div className="absolute top-0 left-0 w-1/3 h-full opacity-10 pointer-events-none">
-          <img src="/miel-produits.jpg" alt="bg" className="w-full h-full object-cover" />
+          <img src={asset("/miel-produits.jpg")} alt="bg" className="w-full h-full object-cover" />
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center relative z-10">
            <span className="inline-block text-xs font-semibold tracking-[0.12em] uppercase text-[#2D6A1B] border-b-2 border-[#2D6A1B] pb-1 mb-4">
@@ -37,7 +38,7 @@ export default function LocalPage() {
           <div className="relative group">
             <div className="absolute -inset-4 bg-[#2D6A1B]/20 rounded-[2rem] blur-2xl group-hover:bg-[#2D6A1B]/30 transition-all duration-500"></div>
             <img 
-              src="/miel-produits.jpg" 
+              src={asset("/miel-produits.jpg")} 
               alt="Produits Locaux Bénin" 
               className="relative rounded-3xl shadow-2xl w-full object-cover aspect-[4/3] group-hover:scale-[1.02] transition-transform duration-500"
             />
@@ -67,9 +68,9 @@ export default function LocalPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-32">
            {[
-             { icon: <MapPin />, title: t('local.benefitCircuit'), desc: t('local.benefitCircuitDesc'), img: '/poudres-graines.jpg' },
-             { icon: <ShoppingBag />, title: t('local.benefitEconomy'), desc: t('local.benefitEconomyDesc'), img: '/thes-infusion.jpg' },
-             { icon: <TrendingUp />, title: t('local.benefitQuality'), desc: t('local.benefitQualityDesc'), img: '/huiles-essentielles.jpg' },
+              { icon: <MapPin />, title: t('local.benefitCircuit'), desc: t('local.benefitCircuitDesc'), img: asset('/poudres-graines.jpg') },
+              { icon: <ShoppingBag />, title: t('local.benefitEconomy'), desc: t('local.benefitEconomyDesc'), img: asset('/thes-infusion.jpg') },
+              { icon: <TrendingUp />, title: t('local.benefitQuality'), desc: t('local.benefitQualityDesc'), img: asset('/huiles-essentielles.jpg') },
            ].map((val, i) => (
             <div key={i} className="group bg-white dark:bg-[#1A1A1A] rounded-3xl border border-[#DDD5C5] dark:border-gray-700 overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
               <div className="h-48 overflow-hidden">

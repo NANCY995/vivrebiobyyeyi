@@ -1,4 +1,5 @@
 import type { Product, ProductCategory, ProductBadge } from '../types';
+import { asset } from '../lib/assets';
 
 const localImages: Record<string, string> = {
   // Huiles Essentielles (existing - better quality)
@@ -38,9 +39,9 @@ const localImages: Record<string, string> = {
 };
 
 const getImage = (name: string): string => {
-  if (localImages[name]) return localImages[name];
+  if (localImages[name]) return asset(localImages[name]);
   for (const [key, path] of Object.entries(localImages)) {
-    if (name.includes(key)) return path;
+    if (name.includes(key)) return asset(path);
   }
   return 'https://dxepmlvhicibhfulujwj.supabase.co/storage/v1/object/public/product-images/products/placeholder.svg';
 };

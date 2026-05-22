@@ -2,6 +2,7 @@ import { useState, useMemo, useEffect } from 'react';
 import { Grid, List, SlidersHorizontal, ShoppingBag, Leaf, Heart } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import Seo from '../components/Seo';
+import { asset } from '../lib/assets';
 import { categories as staticCategories } from '../data/products';
 import type { ProductCategory } from '../types';
 import ProductCard from '../components/ProductCard';
@@ -181,9 +182,9 @@ export default function Shop() {
               <div className="flex items-center gap-8 justify-center md:justify-start pt-4">
                 <div className="flex items-center gap-2">
                   <div className="flex -space-x-2">
-                    <img src="/poudres-graines.jpg" className="w-8 h-8 rounded-full border-2 border-white object-cover" alt="" />
-                    <img src="/huiles-essentielles.jpg" className="w-8 h-8 rounded-full border-2 border-white object-cover" alt="" />
-                    <img src="/cosmetiques.jpg" className="w-8 h-8 rounded-full border-2 border-white object-cover" alt="" />
+                    <img src={asset("/poudres-graines.jpg")} className="w-8 h-8 rounded-full border-2 border-white object-cover" alt="" />
+                    <img src={asset("/huiles-essentielles.jpg")} className="w-8 h-8 rounded-full border-2 border-white object-cover" alt="" />
+                    <img src={asset("/cosmetiques.jpg")} className="w-8 h-8 rounded-full border-2 border-white object-cover" alt="" />
                   </div>
                   <span className="text-sm text-[#6B6B6B]">+2k clients satisfaits</span>
                 </div>
@@ -195,7 +196,7 @@ export default function Shop() {
                 <div className="absolute -top-4 -right-4 w-full h-full bg-[#2D6A1B]/10 rounded-[2rem]"></div>
                 <div className="relative w-56 h-56 md:w-72 md:h-72 rounded-[2rem] overflow-hidden shadow-2xl ring-4 ring-white/80 transform hover:scale-105 transition-transform duration-500">
                   <img
-                    src="/image%20de%20vivre%20bio.jpeg"
+                    src={asset("/image%20de%20vivre%20bio.jpeg")}
                     alt="Huiles essentielles VIVRE BIO"
                     className="w-full h-full object-cover"
                   />
