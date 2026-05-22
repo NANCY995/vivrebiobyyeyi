@@ -1,8 +1,8 @@
 import { useParams, Link } from 'react-router-dom';
-import { Heart, ShoppingCart, Star, ChevronRight } from 'lucide-react';
+import { Heart, ShoppingCart, Star, ChevronRight, Loader2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
-import { products } from '../data/products';
+import { useProduct, useProducts } from '../hooks/useProducts';
 import ProductCard from '../components/ProductCard';
 import { useCartStore } from '../store/cartStore';
 import { useFavoriteStore } from '../store/favoriteStore';
@@ -12,13 +12,26 @@ import { useState } from 'react';
 export default function ProductPage() {
   const { slug } = useParams<{ slug: string }>();
   const { t } = useTranslation();
-  const product = products.find((p) => p.slug === slug);
   const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState('description');
 
+  const { product, loading } = useProduct(slug || '');
   const addItem = useCartStore((s) => s.addItem);
   const isFav = useFavoriteStore((s) => (product ? s.isFavorite(product.id) : false));
   const toggleFav = useFavoriteStore((s) => s.toggleFavorite);
+
+  const { products: allProducts } = useProducts({
+    category: product?.category,
+  });
+
+  if (loading) {
+    return (
+      <div className="max-w-7xl mx-auto px-4 py-20 text-center">
+        <Loader2 size={32} className="mx-auto animate-spin text-[#2D6A1B]" />
+        <p className="mt-4 text-[#6B6B6B]">{t('common.loading')}</p>
+      </div>
+    );
+  }
 
   if (!product) {
     return (
@@ -31,7 +44,7 @@ export default function ProductPage() {
     );
   }
 
-  const relatedProducts = products
+  const relatedProducts = allProducts
     .filter((p) => p.category === product.category && p.id !== product.id)
     .slice(0, 4);
 

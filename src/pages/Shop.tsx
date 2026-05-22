@@ -2,9 +2,11 @@ import { useState, useMemo, useEffect } from 'react';
 import { Grid, List, SlidersHorizontal, ShoppingBag, Leaf, Heart } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
-import { products, categories } from '../data/products';
+import { categories as staticCategories } from '../data/products';
 import type { ProductCategory } from '../types';
 import ProductCard from '../components/ProductCard';
+import { ProductGridSkeleton } from '../components/ProductSkeleton';
+import { useProducts } from '../hooks/useProducts';
 import { formatPrice } from '../utils';
 import {
   Sheet,
@@ -32,6 +34,8 @@ export default function Shop() {
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 20000]);
   const [showMobileFilters, setShowMobileFilters] = useState(false);
 
+  const { products: allProducts, loading } = useProducts();
+
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const q = params.get('q');
@@ -47,7 +51,7 @@ export default function Shop() {
   }, []);
 
   const filteredProducts = useMemo(() => {
-    let result = [...products];
+    let result = [...allProducts];
 
     const query = searchQuery.toLowerCase();
     if (query) {
@@ -83,7 +87,15 @@ export default function Shop() {
     }
 
     return result;
-  }, [searchQuery, selectedCategories, sortBy, priceRange]);
+  }, [allProducts, searchQuery, selectedCategories, sortBy, priceRange]);
+
+  const categories = useMemo(() =>
+    staticCategories.map((cat) => ({
+      ...cat,
+      count: allProducts.filter((p) => p.category === cat.id).length,
+    })),
+    [allProducts]
+  );
 
   const toggleCategory = (cat: ProductCategory) => {
     setSelectedCategories((prev) =>
@@ -183,7 +195,7 @@ export default function Shop() {
                 <div className="absolute -top-4 -right-4 w-full h-full bg-[#2D6A1B]/10 rounded-[2rem]"></div>
                 <div className="relative w-56 h-56 md:w-72 md:h-72 rounded-[2rem] overflow-hidden shadow-2xl ring-4 ring-white/80 transform hover:scale-105 transition-transform duration-500">
                   <img
-                    src="/806175693f0ae1cc590e5ba02549d28b~tplv-tiktokx-cropcenter_1080_1080.jpeg"
+                    src="/image%20de%20vivre%20bio.jpeg"
                     alt="Huiles essentielles VIVRE BIO"
                     className="w-full h-full object-cover"
                   />
@@ -285,7 +297,9 @@ export default function Shop() {
               </p>
             </div>
 
-            {filteredProducts.length === 0 ? (
+            {loading ? (
+              <ProductGridSkeleton count={9} viewMode={viewMode} />
+            ) : filteredProducts.length === 0 ? (
               <div className="text-center py-32">
                 <p className="text-xl font-light text-[#6B6B6B] dark:text-gray-400">{t('common.emptySearch')}</p>
                  <button 

@@ -1,7 +1,8 @@
-import { Leaf, ShoppingBag } from 'lucide-react';
+import { Leaf, ShoppingBag, Loader2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import type { Product } from '../types';
 import { useCartStore } from '../store/cartStore';
-import { products } from '../data/products';
+import { useProducts } from '../hooks/useProducts';
 import { toast } from 'sonner';
 import { useTranslation } from 'react-i18next';
 import { formatPrice } from '../utils';
@@ -38,9 +39,12 @@ export default function ModernCategorySection({
 }: CategorySectionProps) {
   const { t } = useTranslation();
   const addItem = useCartStore((s) => s.addItem);
-  const filteredProducts = products.filter(p => p.category === categoryFilter).slice(0, 8);
+  const { products: filteredProducts, loading } = useProducts({
+    category: categoryFilter,
+    limit: 8,
+  });
 
-  const handleAddToCart = (product: typeof products[0]) => {
+  const handleAddToCart = (product: Product) => {
     addItem(product, 1);
     toast.success(`${product.name} ${t('cart.addedToCart')}`);
   };
@@ -79,6 +83,11 @@ export default function ModernCategorySection({
 
           {/* Products Grid */}
           <div className={`${image ? 'lg:w-2/3' : 'w-full'}`}>
+            {loading ? (
+              <div className="flex justify-center py-12">
+                <Loader2 size={24} className="animate-spin text-[#2D6A1B]" />
+              </div>
+            ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {filteredProducts.map((product, i) => {
                 const color = colors[i % colors.length];
@@ -127,6 +136,7 @@ export default function ModernCategorySection({
                 );
               })}
             </div>
+            )}
 
             {/* View All Link */}
             <div className="text-center mt-8">

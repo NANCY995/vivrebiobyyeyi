@@ -1,25 +1,48 @@
 import type { Product, ProductCategory, ProductBadge } from '../types';
 
 const localImages: Record<string, string> = {
-  'Beurre de Cacao': '/Beurre-De-Cacao.jpeg',
-  'Beurre de Karite': '/Beurre-De-Karite.jpeg',
-  'Coco': '/Huile-Vegetale-De-Coco.jpeg',
-  'Chebe': '/Huile-Vegetale-De-Chebe.jpeg',
-  'Arbre a The': '/Huile-Essentiel-De-Arbre a the.jpeg',
+  // Huiles Essentielles (existing - better quality)
+  'Arbre a The': '/Huile-Essentiel-De-Arbre à the.jpeg',
   'Citron': '/Huile-Essentiel-De-Citron.jpeg',
   'Orange Douce': '/Huile-Essentiel-De-Orange.jpeg',
   'Laurier Noble': '/Huile-Essentiel-De-Laurier noble.jpeg',
   'Niaouli': '/Huile-Essentiel-De-Niaouli.jpeg',
   'Carotte': '/Huile-Essentiel-De-Carotte.jpeg',
-  'Verveine Citronnee': '/Huile-Essentiel-De-Verveine citronnee.jpeg',
+  'Verveine Citronnee': '/Huile-Essentiel-De-Verveine citronnée.jpeg',
   'The Gambie': '/Huile-Essentiel-De-The de gambie.jpeg',
+
+  // Huiles Végétales & Beurres (existing)
+  'Coco': '/Huile-Végétale-De-Coco.jpeg',
+  'Chebe': '/Huile-Vegetale-De-Chebe.jpeg',
+  'Beurre de Cacao': '/Beurre-De-Cacao.jpeg',
+  'Beurre de Karite': '/Beurre-De-Karite.jpeg',
+
+  // Soins Corporels (existing - new image)
+  'Creme Anti-Vergetures': '/anti-vergetures-varices.jpg',
+
+  // Huiles Végétales (new products - exact names)
+  "Huile Végétale d'Ail": '/huile-vegetale-ail.jpeg',
+  "Huile Végétale d'Avocat": '/huile-vegetale-avocat.png',
+  'Huile Végétale de Baobab': '/huile-vegetale-baobab.png',
+  'Huile Végétale de Chanvre': '/huile-vegetale-chanvre.png',
+  'Huile Végétale de Curcuma': '/huile-vegetale-curcuma.png',
+  'Huile Végétale de Fenugrec': '/huile-vegetale-fenugrec.jpg',
+  'Huile Végétale de Nigelle': '/huile-vegetale-nigelle.jpg',
+  'Huile Végétale de Ricin': '/huile-vegetale-ricin.jpg',
+  'Huile Végétale de Souchet': '/huile-vegetale-souchet.png',
+  'Huile de Tchotcho': '/huile-de-tchotcho.png',
+
+  // Soins Corporels (new products)
+  'Beurre de Mangue': '/Beurre-De-Mangue.png',
+  'Gommage Corps': '/Gommage corps.png',
 };
 
 const getImage = (name: string): string => {
+  if (localImages[name]) return localImages[name];
   for (const [key, path] of Object.entries(localImages)) {
     if (name.includes(key)) return path;
   }
-  return `https://images.unsplash.com/photo-${Math.floor(Math.random() * 1000000)}?w=600&h=600&fit=crop`;
+  return '';
 };
 
 const createProduct = (
@@ -194,6 +217,28 @@ export const products: Product[] = [
     createProduct(`he-${i}`, name, 'huiles-essentielles', price,
       `Huile essentielle pure de ${name}`,
       `L'huile essentielle de ${name} est 100% pure et naturelle, ideale pour l'aromathérapie et les soins bien-etre.`)),
+
+  // ===== HUILES VEGETALES =====
+  ...([
+    ["Huile Végétale d'Ail", 3500, 'Purifiante et fortifiante capillaire', "L'huile végétale d'ail est reconnue pour purifier le cuir chevelu et fortifier la chevelure."],
+    ["Huile Végétale d'Avocat", 4000, 'Nutrition intense et regeneration', "L'huile d'avocat nourrit les peaux seches, stimule la production de collagene et regenere l'epiderme."],
+    ['Huile Végétale de Baobab', 4500, 'Elasticite et jeunesse de la peau', "L'huile de baobab est riche en vitamines A, D, E et F. Elle nourrit, hydrate et restaure l'elasticite de la peau."],
+    ['Huile Végétale de Chanvre', 4000, 'Equilibre et apaisement cutane', "L'huile de chanvre regule la production de sebum et apaise les irritations cutanees."],
+    ['Huile Végétale de Curcuma', 4000, 'Eclat et uniformite du teint', "L'huile de curcuma illumine le teint, reduit les taches et unifie la peau grace a ses proprietes antioxydantes."],
+    ['Huile Végétale de Fenugrec', 3500, "Croissance et force des cheveux", "L'huile de fenugrec stimule la pousse des cheveux, les renforce et leur redonne de la brillance."],
+    ['Huile Végétale de Nigelle', 4000, "Immunite et vitalite de la peau", "L'huile de nigelle, aussi appelee huile de cumin noir, est un puissant anti-inflammatoire et immunostimulant."],
+    ['Huile Végétale de Ricin', 3500, 'Cils, sourcils et cheveux renforces', "L'huile de ricin est l'alliée numero 1 pour la pousse des cils, sourcils et cheveux."],
+    ['Huile Végétale de Souchet', 3500, "Energie et vitalite au quotidien", "L'huile de souchet est riche en fibres et mineraux, parfaite pour stimuler l'energie naturelle du corps."],
+    ['Huile de Tchotcho', 3000, "Soin traditionnel africain", "L'huile de tchotcho est un soin traditionnel aux multiples bienfaits pour la peau et les cheveux."],
+  ] as [string, number, string, string][]).map(([name, price, short, desc], i) =>
+    createProduct(`hv-${i}`, name, 'huiles-vegetales', price, short, desc)),
+
+  // ===== NOUVEAUX SOINS CORPORELS =====
+  ...([
+    ['Beurre de Mangue', 2500, 'Nutrition intense et protection', "Le beurre de mangue est riche en acides gras et vitamines. Il nourrit les peaux tres seches et protege des agressions exterieures."],
+    ['Gommage Corps', 3500, 'Exfoliant doux naturel', "Notre gommage corporel 100% naturel exfolie en douceur, elimine les cellules mortes et revele une peau lisse et lumineuse."],
+  ] as [string, number, string, string][]).map(([name, price, short, desc], i) =>
+    createProduct(`soins-nv-${i}`, name, 'soins-corporels', price, short, desc)),
 ];
 
 export const categories = [
@@ -204,6 +249,7 @@ export const categories = [
   { id: 'argiles' as ProductCategory, name: 'Argiles', nameEn: 'Clays', icon: 'gem', count: products.filter(p => p.category === 'argiles').length },
   { id: 'thes-infusions' as ProductCategory, name: 'Thes & Infusions', nameEn: 'Teas & Infusions', icon: 'coffee', count: products.filter(p => p.category === 'thes-infusions').length },
   { id: 'huiles-essentielles' as ProductCategory, name: 'Huiles Essentielles', nameEn: 'Essential Oils', icon: 'droplets', count: products.filter(p => p.category === 'huiles-essentielles').length },
+  { id: 'huiles-vegetales' as ProductCategory, name: 'Huiles Végétales', nameEn: 'Vegetable Oils', icon: 'droplets', count: products.filter(p => p.category === 'huiles-vegetales').length },
   { id: 'diffuseurs' as ProductCategory, name: 'Diffuseurs', nameEn: 'Diffusers', icon: 'wind', count: products.filter(p => p.category === 'diffuseurs').length },
 ];
 

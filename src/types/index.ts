@@ -30,6 +30,7 @@ export type ProductCategory =
   | 'argiles'
   | 'thes-infusions'
   | 'huiles-essentielles'
+  | 'huiles-vegetales'
   | 'diffuseurs';
 
 export type ProductBadge = 'bestseller' | 'new' | 'promo';
