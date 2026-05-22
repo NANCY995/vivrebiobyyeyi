@@ -42,7 +42,7 @@ const getImage = (name: string): string => {
   for (const [key, path] of Object.entries(localImages)) {
     if (name.includes(key)) return path;
   }
-  return '';
+  return 'https://dxepmlvhicibhfulujwj.supabase.co/storage/v1/object/public/product-images/products/placeholder.svg';
 };
 
 const createProduct = (

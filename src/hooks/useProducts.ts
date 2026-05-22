@@ -5,6 +5,8 @@ import type { Product, ProductCategory } from '../types';
 import type { SupabaseProduct } from '../types/database';
 
 function mapProduct(row: SupabaseProduct): Product {
+  const fallback = fallbackProducts.find((p) => p.slug === row.slug);
+  const img = row.image || fallback?.image || '';
   return {
     id: row.id,
     name: row.name,
@@ -14,8 +16,8 @@ function mapProduct(row: SupabaseProduct): Product {
     shortDescription: row.short_description,
     price: row.price,
     currency: row.currency || 'XOF',
-    image: row.image,
-    images: Array.isArray(row.images) && row.images.length > 0 ? row.images : [row.image],
+    image: img,
+    images: Array.isArray(row.images) && row.images.length > 0 ? row.images : [img],
     badges: (row.badges || []) as Product['badges'],
     rating: row.rating || 4.5,
     reviewCount: row.review_count || 0,
