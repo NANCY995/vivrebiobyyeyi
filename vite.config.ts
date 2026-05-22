@@ -5,8 +5,8 @@ import { inspectAttr } from 'kimi-plugin-inspect-react'
 import viteCompression from 'vite-plugin-compression'
 
 // https://vite.dev/config/
-export default defineConfig({
-  base: './',
+export default defineConfig(({ command }) => ({
+  base: command === 'serve' ? '/' : '/vivrebiobyyeyi/',
   plugins: [
     inspectAttr(),
     react(),
@@ -47,4 +47,4 @@ export default defineConfig({
     chunkSizeWarningLimit: 200,
     cssCodeSplit: true,
   },
-})
+}))
