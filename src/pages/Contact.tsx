@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Phone, Mail, MapPin, Clock } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { Helmet } from 'react-helmet-async';
+import Seo from '../components/Seo';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -46,10 +46,10 @@ export default function ContactPage() {
 
   return (
     <>
-      <Helmet>
-        <title>{t('contact.title')} - VIVRE BIO</title>
-        <meta name="description" content={t('contact.subtitle')} />
-      </Helmet>
+      <Seo
+        title={t('contact.title')}
+        description={t('contact.subtitle')}
+      />
 
       <div className="bg-gradient-to-b from-[#EDE6D6] to-[#F5F0E8] py-20 border-b border-[#DDD5C5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center">

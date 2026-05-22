@@ -15,9 +15,14 @@ i18n
     fallbackLng: 'fr',
     interpolation: { escapeValue: false },
     detection: {
-      order: ['navigator', 'htmlTag'],
-      caches: [],
+      order: ['localStorage', 'navigator', 'htmlTag'],
+      caches: ['localStorage'],
+      lookupLocalStorage: 'i18nLang',
     },
   });
+
+i18n.on('languageChanged', (lng) => {
+  document.documentElement.lang = lng;
+});
 
 export default i18n;

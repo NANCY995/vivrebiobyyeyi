@@ -27,7 +27,7 @@ export default function ProductCard({ product, viewMode = 'grid' }: ProductCardP
     return (
       <div className="bg-white dark:bg-gray-800 border border-[#DDD5C5] dark:border-gray-700 rounded-lg overflow-hidden flex gap-5 transition-shadow hover:shadow-lg">
         <Link to={`/product/${product.slug}`} className="w-40 h-40 flex-shrink-0 overflow-hidden relative">
-          <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
+          <img src={product.image} alt={product.name} loading="lazy" className="w-full h-full object-cover" />
           {product.badges.length > 0 && (
             <div className="absolute top-2 left-2 flex flex-col gap-1">
               {product.badges.map((b) => (
@@ -74,7 +74,7 @@ export default function ProductCard({ product, viewMode = 'grid' }: ProductCardP
   return (
     <div className="bg-white dark:bg-gray-800 border border-[#DDD5C5] dark:border-gray-700 rounded-lg overflow-hidden transition-shadow hover:shadow-lg group">
       <Link to={`/product/${product.slug}`} className="relative block overflow-hidden aspect-square">
-        <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+        <img src={product.image} alt={product.name} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
         {product.badges.length > 0 && (
           <div className="absolute top-2 left-2 flex flex-col gap-1">
             {product.badges.map((b) => (

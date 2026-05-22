@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Helmet } from 'react-helmet-async';
+import Seo from '../components/Seo';
 // @ts-ignore
 import { FileText, Lock, ShieldCheck, Check, Scale } from 'lucide-react';
 
@@ -8,10 +8,10 @@ export default function LegalPage() {
 
   return (
     <>
-      <Helmet>
-        <title>{t('footer.legal')} - VIVRE BIO</title>
-        <meta name="description" content={t('legal.subtitle')} />
-      </Helmet>
+      <Seo
+        title={t('footer.legal')}
+        description={t('legal.subtitle')}
+      />
 
       <div className="relative bg-gradient-to-b from-[#EDE6D6] to-[#F5F0E8] py-24 border-b border-[#DDD5C5] overflow-hidden">
         <div className="absolute top-0 right-0 w-1/3 h-full opacity-10 pointer-events-none">

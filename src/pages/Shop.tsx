@@ -1,7 +1,7 @@
 import { useState, useMemo, useEffect } from 'react';
 import { Grid, List, SlidersHorizontal, ShoppingBag, Leaf, Heart } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { Helmet } from 'react-helmet-async';
+import Seo from '../components/Seo';
 import { categories as staticCategories } from '../data/products';
 import type { ProductCategory } from '../types';
 import ProductCard from '../components/ProductCard';
@@ -144,10 +144,10 @@ export default function Shop() {
 
   return (
     <>
-      <Helmet>
-        <title>{t('shop.title')} - VIVRE BIO</title>
-        <meta name="description" content={t('shop.subtitle')} />
-      </Helmet>
+      <Seo
+        title={t('shop.title')}
+        description={t('shop.subtitle')}
+      />
 
       {/* Hero Banner */}
       <div className="relative w-full bg-gradient-to-br from-[#F5F0E8] via-[#EDE6D6] to-[#E8E0D0] overflow-hidden">

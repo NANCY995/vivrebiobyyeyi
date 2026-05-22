@@ -1,7 +1,8 @@
 import { useParams, Link } from 'react-router-dom';
 import { Heart, ShoppingCart, Star, ChevronRight, Loader2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { Helmet } from 'react-helmet-async';
+import Seo from '../components/Seo';
+import { productSchema } from '../lib/schema';
 import { useProduct, useProducts } from '../hooks/useProducts';
 import ProductCard from '../components/ProductCard';
 import { useCartStore } from '../store/cartStore';
@@ -55,12 +56,29 @@ export default function ProductPage() {
     { id: 'ingredients', label: t('common.ingredients') },
   ];
 
+  const productSchemaData = product
+    ? productSchema({
+        name: product.name,
+        description: product.description,
+        image: product.image,
+        price: product.price,
+        currency: product.currency,
+        availability: product.inStock,
+        rating: product.rating,
+        reviewCount: product.reviewCount,
+        slug: product.slug,
+      })
+    : undefined;
+
   return (
     <>
-      <Helmet>
-        <title>{product.name} - VIVRE BIO</title>
-        <meta name="description" content={product.shortDescription} />
-      </Helmet>
+      <Seo
+        title={product.name}
+        description={product.shortDescription}
+        ogImage={product.image}
+        ogType="product"
+        jsonLd={productSchemaData}
+      />
 
       <div className="bg-gradient-to-b from-[#EDE6D6] to-[#F5F0E8] py-6 border-b border-[#DDD5C5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">

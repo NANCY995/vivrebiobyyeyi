@@ -75,6 +75,7 @@ export default function ModernCategorySection({
                 <img 
                   src={image} 
                   alt={imageAlt || 'Category'} 
+                  loading="lazy"
                   className="w-full h-96 lg:h-[500px] object-cover rounded-lg shadow-lg"
                 />
               </div>

@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
-import { Helmet } from 'react-helmet-async';
+import Seo from '../components/Seo';
+import { localBusinessSchema } from '../lib/schema';
 // @ts-ignore
 import { MapPin, ShoppingBag, TrendingUp, Globe, Leaf, Heart } from 'lucide-react';
 
@@ -8,10 +9,11 @@ export default function LocalPage() {
 
   return (
     <>
-       <Helmet>
-         <title>{t('footer.local')} - VIVRE BIO</title>
-         <meta name="description" content={t('local.engagement')} />
-       </Helmet>
+       <Seo
+         title={t('footer.local')}
+         description={t('local.engagement')}
+         jsonLd={localBusinessSchema()}
+       />
 
       <div className="relative bg-gradient-to-b from-[#EDE6D6] to-[#F5F0E8] py-24 border-b border-[#DDD5C5] overflow-hidden">
         <div className="absolute top-0 left-0 w-1/3 h-full opacity-10 pointer-events-none">

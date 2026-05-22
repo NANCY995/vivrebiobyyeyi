@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Minus, Plus, Trash2, ShoppingBag, ArrowLeft } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { Helmet } from 'react-helmet-async';
+import Seo from '../components/Seo';
 import { useCartStore } from '../store/cartStore';
 import { formatPrice, generateWhatsAppMessage } from '../utils';
 import { toast } from 'sonner';
@@ -26,9 +26,10 @@ export default function CartPage() {
   if (items.length === 0) {
     return (
       <>
-        <Helmet>
-          <title>{t('cart.title')} - VIVRE BIO</title>
-        </Helmet>
+        <Seo
+          title={t('cart.title')}
+          description={t('cart.subtitle')}
+        />
         <div className="bg-[#EDE6D6] dark:bg-gray-800 py-10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <h1 className="font-['Cormorant_Garamond'] text-4xl font-normal text-[#2A2A2A] dark:text-gray-100">{t('cart.title')}</h1>
@@ -49,9 +50,10 @@ export default function CartPage() {
 
   return (
     <>
-      <Helmet>
-        <title>{t('cart.title')} - VIVRE BIO</title>
-      </Helmet>
+      <Seo
+        title={t('cart.title')}
+        description={t('cart.subtitle')}
+      />
 
       <div className="bg-gradient-to-b from-[#EDE6D6] to-[#F5F0E8] py-20 border-b border-[#DDD5C5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center">

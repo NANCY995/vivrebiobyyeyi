@@ -1,5 +1,6 @@
-import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
+import Seo from '../components/Seo';
+import { organizationSchema, websiteSchema } from '../lib/schema';
 import ModernHero from '../components/ModernHero';
 import TrustStrip from '../components/TrustStrip';
 import ModernCategorySection from '../components/ModernCategorySection';
@@ -41,6 +42,7 @@ function AboutSection() {
             <img 
               src="/miel-produits.jpg" 
               alt="Produits naturels Vivre Bio" 
+              loading="lazy"
               className="w-full h-[500px] object-cover rounded-lg shadow-xl"
             />
             <div className="absolute -bottom-6 -left-6 bg-[#2D6A1B] text-white p-6 rounded-lg shadow-lg max-w-xs">
@@ -58,10 +60,11 @@ export default function Home() {
   const { t } = useTranslation();
   return (
     <>
-      <Helmet>
-        <title>{t('home.pageTitle')}</title>
-        <meta name="description" content={t('home.pageDesc')} />
-      </Helmet>
+      <Seo
+        title={t('home.pageTitle')}
+        description={t('home.pageDesc')}
+        jsonLd={[organizationSchema(), websiteSchema()]}
+      />
       <ModernHero />
       <TrustStrip />
       <ModernCategorySection
@@ -126,6 +129,7 @@ export default function Home() {
           <img 
             src="/huiles-essentielles.jpg" 
             alt="Huiles essentielles" 
+            loading="lazy"
             className="w-full h-80 object-cover rounded-lg shadow-lg mb-8"
           />
 

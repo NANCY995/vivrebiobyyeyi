@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Helmet } from 'react-helmet-async';
+import Seo from '../components/Seo';
+import { faqSchema } from '../lib/schema';
 import { faqData } from '../data/products';
 import {
   Accordion,
@@ -21,10 +22,11 @@ export default function FAQPage() {
 
   return (
     <>
-      <Helmet>
-        <title>{t('faq.title')} - VIVRE BIO</title>
-        <meta name="description" content={t('faq.subtitle')} />
-      </Helmet>
+      <Seo
+        title={t('faq.title')}
+        description={t('faq.subtitle')}
+        jsonLd={faqSchema(faqData.map(f => ({ question: f.question, answer: f.answer })))}
+      />
 
       <div className="bg-gradient-to-b from-[#EDE6D6] to-[#F5F0E8] py-20 border-b border-[#DDD5C5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center">

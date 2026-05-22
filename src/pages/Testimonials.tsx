@@ -1,6 +1,6 @@
 import { Star } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { Helmet } from 'react-helmet-async';
+import Seo from '../components/Seo';
 import { testimonials } from '../data/products';
 
 export default function TestimonialsPage() {
@@ -8,10 +8,10 @@ export default function TestimonialsPage() {
 
   return (
     <>
-      <Helmet>
-        <title>{t('testimonials.title')} - VIVRE BIO</title>
-        <meta name="description" content={t('testimonials.subtitle')} />
-      </Helmet>
+      <Seo
+        title={t('testimonials.title')}
+        description={t('testimonials.subtitle')}
+      />
 
       <div className="bg-gradient-to-b from-[#EDE6D6] to-[#F5F0E8] py-20 border-b border-[#DDD5C5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center">

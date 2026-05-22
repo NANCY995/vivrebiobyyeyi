@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
-import { Helmet } from 'react-helmet-async';
+import Seo from '../components/Seo';
+import { breadcrumbSchema } from '../lib/schema';
 // @ts-ignore
 import { ArrowRight, Calendar, Clock, BookOpen, Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -54,10 +55,11 @@ export default function BlogPage() {
 
   return (
     <>
-       <Helmet>
-         <title>{t('footer.blog')} - VIVRE BIO</title>
-         <meta name="description" content={t('blog.blogDesc')} />
-       </Helmet>
+       <Seo
+         title={t('footer.blog')}
+         description={t('blog.blogDesc')}
+         jsonLd={breadcrumbSchema([{ name: t('footer.blog'), url: '/blog' }])}
+       />
 
       <div className="relative bg-gradient-to-b from-[#EDE6D6] to-[#F5F0E8] py-24 border-b border-[#DDD5C5] overflow-hidden">
         <div className="absolute top-0 right-0 w-1/3 h-full opacity-10 pointer-events-none">
@@ -96,11 +98,12 @@ export default function BlogPage() {
           {BLOG_POSTS.map((post) => (
              <article key={post.id} className="group bg-white dark:bg-[#1A1A1A] rounded-3xl border border-[#DDD5C5] dark:border-gray-700 overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
                <div className="relative h-64 overflow-hidden">
-                 <img 
-                   src={post.image} 
-                   alt={t(`blog.posts.${post.id}.title`)} 
-                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                 />
+                  <img 
+                    src={post.image} 
+                    alt={t(`blog.posts.${post.id}.title`)} 
+                    loading="lazy"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
                  <div className="absolute top-4 left-4 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-[#2D6A1B] shadow-sm uppercase tracking-wider">
                    {t(`blog.posts.${post.id}.category`)}
                  </div>

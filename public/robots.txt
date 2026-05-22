@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nancy995.github.io/vivrebiobyyeyi/sitemap.xml
