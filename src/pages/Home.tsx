@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import Seo from '../components/Seo';
-import { organizationSchema, websiteSchema } from '../lib/schema';
+import { organizationSchema, websiteSchema, faqSchema } from '../lib/schema';
 import { asset } from '../lib/assets';
 import ModernHero from '../components/ModernHero';
 import TrustStrip from '../components/TrustStrip';
@@ -155,6 +155,42 @@ export default function Home() {
         imageAlt={t('home.categories.diffuseurs.alt')}
       />
       <AboutSection />
+      <section className="py-24 bg-white">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-12">
+            <h2 className="font-['Cormorant_Garamond'] text-4xl md:text-5xl font-light text-[#2A2A2A] mb-4">
+              {t('home.faqTitle')}
+            </h2>
+            <p className="text-[#6B6B6B] max-w-2xl mx-auto">
+              {t('home.faqSubtitle')}
+            </p>
+          </div>
+          <div className="space-y-4">
+            {[1, 2, 3, 4].map((i) => (
+              <details key={i} className="group bg-[#F5F0E8] rounded-lg p-5 cursor-pointer">
+                <summary className="font-medium text-[#2A2A2A] flex items-center justify-between">
+                  {t(`home.faq_q${i}`)}
+                  <span className="text-[#2D6A1B] transform group-open:rotate-180 transition-transform">▼</span>
+                </summary>
+                <p className="mt-3 text-[#6B6B6B] leading-relaxed">
+                  {t(`home.faq_a${i}`)}
+                </p>
+              </details>
+            ))}
+          </div>
+        </div>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(faqSchema([
+              { question: t('home.faq_q1'), answer: t('home.faq_a1') },
+              { question: t('home.faq_q2'), answer: t('home.faq_a2') },
+              { question: t('home.faq_q3'), answer: t('home.faq_a3') },
+              { question: t('home.faq_q4'), answer: t('home.faq_a4') },
+            ]))
+          }}
+        />
+      </section>
       <ModernContactCTA />
     </>
   );

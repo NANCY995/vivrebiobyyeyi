@@ -7,6 +7,7 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import PromoBar from './components/PromoBar';
+import { ProtectedRoute } from './components/ProtectedRoute';
 
 const Home = lazy(() => import('./pages/Home'));
 const Shop = lazy(() => import('./pages/Shop'));
@@ -23,6 +24,11 @@ const BlogPost = lazy(() => import('./pages/BlogPost'));
 const Delivery = lazy(() => import('./pages/Delivery'));
 const Legal = lazy(() => import('./pages/Legal'));
 const NotFound = lazy(() => import('./pages/NotFound'));
+const Login = lazy(() => import('./pages/Login'));
+const Register = lazy(() => import('./pages/Register'));
+const ForgotPassword = lazy(() => import('./pages/ForgotPassword'));
+const ResetPassword = lazy(() => import('./pages/ResetPassword'));
+const Profile = lazy(() => import('./pages/Profile'));
 
 function PageLoader() {
   return (
@@ -40,11 +46,16 @@ function App() {
         <Navbar />
         <Suspense fallback={<PageLoader />}>
           <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/reset-password" element={<ResetPassword />} />
+            <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
             <Route path="/" element={<Home />} />
             <Route path="/shop" element={<Shop />} />
             <Route path="/product/:slug" element={<Product />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/favorites" element={<Favorites />} />
+            <Route path="/cart" element={<ProtectedRoute><Cart /></ProtectedRoute>} />
+            <Route path="/favorites" element={<ProtectedRoute><Favorites /></ProtectedRoute>} />
             <Route path="/testimonials" element={<Testimonials />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/contact" element={<Contact />} />

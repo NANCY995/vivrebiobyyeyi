@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { ShoppingBag, Heart, Sun, Moon, Search, Globe } from 'lucide-react';
+import { ShoppingBag, Heart, Sun, Moon, Search, Globe, User, LogOut } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
 import { useCartStore } from '../store/cartStore';
 import { useFavoriteStore } from '../store/favoriteStore';
 import { useThemeStore } from '../store/themeStore';
@@ -22,6 +23,7 @@ export default function Navbar() {
   const { theme, toggleTheme } = useThemeStore();
   const { i18n, t } = useTranslation();
   const location = useLocation();
+  const { state: authState, logout } = useAuth();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -102,6 +104,55 @@ export default function Navbar() {
                 </DropdownMenuContent>
               </DropdownMenu>
 
+              {authState.user ? (
+                <DropdownMenu>
+                  <DropdownMenuTrigger className="icon-btn relative">
+                    {authState.user?.avatar_url ? (
+                      <img
+                        src={authState.user.avatar_url}
+                        alt="User avatar"
+                        className="h-6 w-6 rounded-full object-cover"
+                      />
+                    ) : (
+                      <User size={18} strokeWidth={1.8} />
+                    )}
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end" className="bg-white dark:bg-[#1A1A1A] border border-[#DDD5C5] dark:border-gray-700">
+                    <DropdownMenuItem onClick={() => navigate('/profile')} className="cursor-pointer dark:text-gray-200">
+                      <User size={16} className="mr-2" />
+                      {t('auth.profile')}
+                    </DropdownMenuItem>
+                    <DropdownMenuItem
+                      onClick={async () => {
+                        await logout();
+                        navigate('/');
+                      }}
+                      className="cursor-pointer text-red-600 dark:text-red-400"
+                    >
+                      <LogOut size={16} className="mr-2" />
+                      {t('auth.logout')}
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              ) : (
+                <>
+                  <Link
+                    to="/login"
+                    className="icon-btn"
+                    aria-label={t('auth.login')}
+                  >
+                    <User size={18} strokeWidth={1.8} />
+                  </Link>
+                  <Link
+                    to="/register"
+                    className="icon-btn ml-1"
+                    aria-label={t('auth.register')}
+                  >
+                    <User size={18} strokeWidth={1.8} />
+                  </Link>
+                </>
+              )}
+
               <Link
                 to="/favorites"
                 className="icon-btn relative"
@@ -114,15 +165,15 @@ export default function Navbar() {
               </Link>
 
                <Link
-                to="/cart"
-                className="icon-btn relative"
-                aria-label={t('common.cart')}
-              >
-                <ShoppingBag size={18} strokeWidth={1.8} />
-                {itemCount > 0 && (
-                  <span className="cart-count">{itemCount}</span>
-                )}
-              </Link>
+                 to="/cart"
+                 className="icon-btn relative"
+                 aria-label={t('common.cart')}
+               >
+                 <ShoppingBag size={18} strokeWidth={1.8} />
+                 {itemCount > 0 && (
+                   <span className="cart-count">{itemCount}</span>
+                 )}
+               </Link>
             </div>
           </div>
         </div>
